@@ -1,0 +1,15 @@
+*{
+  margin: 0;
+}
+
+body{
+  min-height: 100vh;
+}
+
+#root{
+  min-height: 100vh;
+}
+
+:root{
+  --theme-color: rgba(202, 0, 168, 0.712)
+}

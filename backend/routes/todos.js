@@ -68,7 +68,9 @@ router.get('/:id', (req,res)=>{
     User.findById(req.params.id)
     .then(user => {
         res.json({
-            tasks: user.tasks
+            tasks: user.tasks,
+            completedTasks: user.completedTasks,
+            projects: user.projects
         })
     })
     .catch(err => res.json(err))
@@ -76,16 +78,16 @@ router.get('/:id', (req,res)=>{
 
 // USER PROJECT TASKS
 router.route('/:id/:project').get((req,res)=>{
-    const ObjectId = mongoose.Types.ObjectId;
-    User.aggregate([
-        {$match: {_id: ObjectId(req.params.id) }},
-        {$unwind : "$tasks"},
-        {$match: {"tasks.project" : req.params.project}}
-    ])
+    User.findById(req.params.id)
     .then(user =>{
-        tasks = []
-        user.forEach(result => tasks.push(result.tasks))
-        res.json(tasks)
+        let completedTasks = user.completedTasks.filter(task => task.project===req.params.project)
+        let tasks = user.tasks.filter(task => task.project===req.params.project)
+        let response = {
+            projects: user.projects,
+            tasks,
+            completedTasks
+        }
+        res.json(response)
     })
     .catch(err => res.json(`ERROR: ${err}`))
 })

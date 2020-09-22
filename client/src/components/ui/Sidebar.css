@@ -1,0 +1,26 @@
+.nav{
+    position: fixed;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow:-7px 0px 41px -19px rgba(0,0,0,0.48);
+    width: 250px;
+}
+.nav > *{
+    width: 70%;
+    margin: 1rem auto;
+}
+
+.logo{
+    font-family: 'Rubik', sans-serif;
+    color: var(--theme-color);
+    font-size: 40px;
+}
+
+.nav-links{
+    display:flex;
+    flex-direction: column;
+}
+
+.nav-links > *{
+    text-decoration: none;
+}

@@ -1,0 +1,51 @@
+.homepage-container{
+    min-height: 100vh;
+    display:grid;
+    grid-template-columns:100%;
+    grid-template-rows: 100%;
+    grid-template-areas: 
+        "content"
+    ;
+}
+
+.homepage-container > div{
+    grid-area: "content";
+    background-color: rgb(245, 245, 245);
+}
+
+.content-container{
+    width: 60%;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: auto auto;
+    row-gap: 1.5rem;
+    grid-template-areas: 
+        "form form form"
+        "tasks tasks tasks";
+}
+
+.newTask-form{
+    grid-area: form;
+}
+
+.tasks-container{
+    grid-area: tasks;
+    display:flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.heading{
+    color:rgba(143, 0, 119, 0.527)
+}
+
+.form-heading{
+    width: 60%;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 2rem;
+    margin-bottom: -1rem;
+}

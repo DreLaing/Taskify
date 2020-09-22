@@ -1,0 +1,53 @@
+.task-container{
+    display:flex;
+    margin: 1rem;
+    background-color: white;
+    padding:10px;
+    align-items: center;
+}
+
+.taskIcons-container > *{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    color: rgba(95, 0, 102, 0.651);
+    cursor: pointer;
+    padding: 3px;
+    border: 2px solid var(--theme-color);
+    border-radius: 60px;
+}
+
+.task{
+    font-family: 'Rubik', sans-serif;
+    color: rgba(0, 0, 0, 0.74);
+    font-weight: 600;
+}
+
+.task-date{
+    margin-left: auto;
+    font-weight: 600;
+}
+
+.not-overdue{
+    color: var(--theme-color);
+}
+
+.not-overdue > i{
+    display:none
+}
+
+.overdue{
+    color: red;
+}
+
+.overdue > i{
+    display:none
+}
+
+.completed{
+    color:rgb(1, 209, 1);
+    font-weight: 800;
+}
+
+.completed > span{
+    display:none
+}
