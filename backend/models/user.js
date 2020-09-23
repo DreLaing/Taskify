@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
     password:{type:String, required:true},
     tasks: [{
         task:String,
-        dueDate:{type:Date},
+        dueDate:{type:Date, default:Date.now},
         dateCreated:{type:Date, default:Date.now},
         project:{type:String, default:'General'}
     }],

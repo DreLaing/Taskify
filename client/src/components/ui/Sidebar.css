@@ -10,6 +10,13 @@
     margin: 1rem auto;
 }
 
+.nav > hr{
+    position: absolute;
+    margin-top: 5px;
+    width: 100%;
+    border-top: 1px solid rgba(107, 107, 107, 0.678)
+}
+
 .logo{
     font-family: 'Rubik', sans-serif;
     color: var(--theme-color);
@@ -17,10 +24,40 @@
 }
 
 .nav-links{
+    margin-top: 2rem;
     display:flex;
     flex-direction: column;
+    min-height: 60%;
 }
 
 .nav-links > *{
+    margin-top: 15px;
+    padding-left: 10px;
+    color:rgb(134, 134, 134);
     text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+}
+
+
+.create-project{
+    cursor: pointer;
+}
+
+.sidebar-footer{
+    margin-top: 2rem;
+    display:flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+.sidebar-footer > *{
+    color:rgb(134, 134, 134);
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.active-link{
+    border-left: 2px solid var(--theme-color);
+    font-weight: bold;
+    color: black;
 }

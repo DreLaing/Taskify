@@ -1,30 +1,82 @@
 .task-container{
+    width:100%;
+    position: relative;
     display:flex;
     margin: 1rem;
     background-color: white;
     padding:10px;
     align-items: center;
+    box-shadow: 5px 5px 4px -3px #D3D3D3;
 }
 
-.taskIcons-container > *{
+.taskIcons-container{
+    position:absolute;
+    display: flex;
+}
+
+.taskIcons-container > * > *{
+    position: relative;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    color: rgba(95, 0, 102, 0.651);
     cursor: pointer;
     padding: 3px;
-    border: 2px solid var(--theme-color);
     border-radius: 60px;
 }
 
+.taskIcons-container > :nth-child(1) > *{
+    color:rgb(0, 196, 0);
+    border: 2px solid rgb(0, 196, 0);
+}
+
+.taskIcons-container > :nth-child(2) > *{
+    color:gray;
+    border: 2px solid gray;
+}
+
+.taskIcons-container > :nth-child(3) > *{
+    color:rgba(202, 1, 1, 0.733);
+    border: 2px solid rgba(255, 0, 0, 0.733);
+}
+
+.taskIcons-container > *{
+    position: relative;
+}
+.taskIcons-container > *::before,
+.taskIcons-container > *::after{
+    --scale: 0;
+    width: max-content;
+    position: absolute;
+    transform: scale(var(--scale));
+    top: -45px;
+    left:-30%;
+    transition: 200ms transform;
+    transform-origin: bottom center ;
+}
+
+.taskIcons-container > *::before{
+    content: attr(data-tooltip);
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+.taskIcons-container > *:hover::before{
+    --scale: 1;
+}
+
 .task{
+    position: relative;
     font-family: 'Rubik', sans-serif;
     color: rgba(0, 0, 0, 0.74);
     font-weight: 600;
+    width: 60%;
 }
 
 .task-date{
     margin-left: auto;
-    font-weight: 600;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
 }
 
 .not-overdue{
@@ -43,11 +95,18 @@
     display:none
 }
 
-.completed{
-    color:rgb(1, 209, 1);
-    font-weight: 800;
+.completed> .done{
+    color:rgba(1, 209, 1, 0.534);
+}
+
+.completed > .delete{
+    color:rgba(202, 1, 1, 0.733);
 }
 
 .completed > span{
+    display:none
+}
+
+.hide{
     display:none
 }

@@ -24,6 +24,13 @@ router.post('/register', async (req,res) =>{
         res.status(500).json(`${err}`)})
 })
 
+// GET PROJECTS
+router.get('/:id/projects', (req,res)=>{
+    User.findById(req.params.id)
+    .then(user => res.json(user.projects))
+    .catch(err => res.json(err))
+})
+
 // NEW PROJECT
 router.post('/:id/projects/add', (req,res)=>{
     User.findByIdAndUpdate(req.params.id)
@@ -95,19 +102,15 @@ router.route('/:id/:project').get((req,res)=>{
 // UPDATE TASK
 router.post('/:id/update/:task', (req,res)=>{
     const ObjectId = mongoose.Types.ObjectId;
-    User.aggregate([
-        {$match: {_id: ObjectId(req.params.id) }},
-        {$unwind : "$tasks"},
-        {$match: {"tasks._id": ObjectId(req.params.task)}}
-    ])
+    User.findById(req.params.id)
     .then(result =>{   
-        result[0].tasks.task = req.body.task
-        result[0].tasks.dueDate = req.body.date
-        const response = {
-            task: result[0].tasks
+        let task = result.tasks.id(req.params.task)
+        task.task = req.body.task
+        if(req.body.date){
+            task.dueDate = req.body.date
         }
-        res.json(response.task)
-        
+        result.save()
+        res.json(task)
     })
     .catch(err => res.json(err))
 })
@@ -130,6 +133,7 @@ router.delete('/:id/delete/:task', (req,res)=>{
     User.findById(req.params.id)
     .then(result=>{
         result.tasks.pull(req.params.task)
+        result.completedTasks.pull(req.params.task)
         result.save()
         res.json(result.tasks)
     })

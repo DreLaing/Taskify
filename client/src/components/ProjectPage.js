@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import axios from 'axios'
-import Sidebar from './Sidebar'
 import NewTask from './NewTask'
 import Tasks from './Tasks'
 
 const ProjectPage = () => {
+    const location = useLocation()
     const { project } = useParams()
+    const [loading, setLoading] = useState(false)
     const [tasks, setTasks] = useState([{
         _id: '',
         task:'',
@@ -19,7 +20,7 @@ const ProjectPage = () => {
         dueDate:'',
         dateCreated:''
     }])
-    const [projects, setProjects] = useState([''])
+
     const token = localStorage.getItem("token")
     const userID = localStorage.getItem("userID")
 
@@ -29,31 +30,29 @@ const ProjectPage = () => {
         .then(user => {
             setTasks(user.data.tasks)
             setCompletedTasks(user.data.completedTasks)
-            setProjects(user.data.projects)
             console.log(user.data)
         })
         .catch(err => console.log(err))
-    },[])
+    },[loading, location])
     return (
         <div className='homepage-container'>
-            <Sidebar projects={projects}/>
             <div>
                 <h3 className='heading form-heading'>CREATE NEW "{project}" TASK</h3>
                 <div className='content-container'>
-                    <NewTask userID={userID} project={project} token={token} setTasks={setTasks}/>
+                    <NewTask userID={userID} project={project} token={token} setTasks={setTasks} setLoading={setLoading}/>
                     <div className='tasks-container'>
                         
                         <div>
                             <h3 className='heading'>"{project}" Tasks</h3>
                             {tasks.map((task)=>{
-                                return <Tasks key={task._id} task={task} editable={true} />
+                                return <Tasks key={task._id} task={task} editable={true} token={token} userID={userID} setLoading={setLoading} loading={loading}/>
                             })}
                         </div>
 
                         <div>
                             <h3 className='heading'>Completed "{project}" Tasks</h3>
                             {completedTasks.map(task =>{
-                                return <Tasks key={task._id} task={task} editable={false} />
+                                return <Tasks key={task._id} task={task} editable={false} completed={true} token={token} userID={userID} setLoading={setLoading} loading={loading} />
                             })}
                         </div>
                     </div>

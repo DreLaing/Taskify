@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const NewTask = (props) => {
     const [disabled, setDisabled] = useState(true)
     const [task, setTask] = useState('')
-    const [date, setDate] = useState()
+    const [date, setDate] = useState('')
 
     const handleChange = (date) =>{
         setDate(date)
@@ -15,7 +15,7 @@ const NewTask = (props) => {
     }
 
     const validate = () =>{
-        if(task.length < 3 || date === ''){
+        if(date.length < 1 || task.length < 3 || task.length > 70){
             setDisabled(true)
         }
         else{
@@ -36,6 +36,7 @@ const NewTask = (props) => {
                 setTask('')
                 setDate('')
                 setDisabled(true)
+                props.setLoading(true)
             })
             .catch(err => console.log(err))
         }
@@ -66,6 +67,7 @@ const NewTask = (props) => {
                 <DatePicker 
                     selected={date} 
                     onChange={handleChange}
+                    onSelect={()=>validate()}
                 />
             </div>
 
