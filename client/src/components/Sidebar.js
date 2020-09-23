@@ -25,7 +25,7 @@ const Sidebar = () => {
     return (
         <>
         <nav className='nav'>
-            <p className='logo'>Taskify</p>
+            <p><Link className='logo' to={`/user/${userID}`}>Taskify</Link></p>
             <hr/>
             <div className='nav-links'>
                 <Link to={`/user/${userID}`} className={location.pathname==`/user/${userID}` && 'active-link'}>All Tasks</Link>

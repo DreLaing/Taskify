@@ -21,6 +21,7 @@
     font-family: 'Rubik', sans-serif;
     color: var(--theme-color);
     font-size: 40px;
+    text-decoration: none;
 }
 
 .nav-links{
