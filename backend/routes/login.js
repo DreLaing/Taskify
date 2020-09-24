@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const User = require('../models/user')
 
+//LOGIN
 router.post('/', async (req,res) =>{
     const username = req.body.username;
     User.find({username: username})
@@ -26,6 +27,29 @@ router.post('/', async (req,res) =>{
         else{
             res.status(404).json('No registered user with that username')
         }})
-    .catch(err => `Error: ${err}`)
+    .catch(err => res.status(404).json('error'))
+})
+
+// REGISTER
+router.post('/register', async (req,res) =>{
+    const username = req.body.username;
+    const password = await bcrypt.hash(req.body.password, 10)
+    const newUser = new User({
+        username,
+        password
+    })
+    newUser.save()
+    .then(user => {
+        const token = jwt.sign({
+            userID: user._id
+        }, process.env.JWT_SIGN,{
+            expiresIn: '3h'
+        })
+        console.log(token)
+        res.status(200).json(token)
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).json(`${err}`)})
 })
 module.exports = router

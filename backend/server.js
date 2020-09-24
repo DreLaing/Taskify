@@ -25,7 +25,7 @@ connection.once('open', ()=>{
 const login = require('./routes/login')
 app.use('/login', login)
 const todos = require('./routes/todos')
-app.use('/user',/* auth,*/ todos)
+app.use('/user',auth, todos)
 
 app.listen(port, ()=>{
     console.log(`RUNNING ON PORT ${port}`)

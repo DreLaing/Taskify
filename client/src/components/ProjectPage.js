@@ -44,14 +44,16 @@ const ProjectPage = () => {
                         
                         <div>
                             <h3 className='heading'>"{project}" Tasks</h3>
-                            {tasks.map((task)=>{
+                            {tasks.length < 1 ? <h4 style={{margin:'10px 0px 0px 20px'}}>No Current Tasks</h4> :
+                            tasks.map((task)=>{
                                 return <Tasks key={task._id} task={task} editable={true} token={token} userID={userID} setLoading={setLoading} loading={loading}/>
                             })}
                         </div>
 
                         <div>
                             <h3 className='heading'>Completed "{project}" Tasks</h3>
-                            {completedTasks.map(task =>{
+                            {completedTasks.length < 1 ? <h4 style={{margin:'10px 0px 0px 20px'}}>No Completed Tasks</h4> :
+                                completedTasks.map(task =>{
                                 return <Tasks key={task._id} task={task} editable={false} completed={true} token={token} userID={userID} setLoading={setLoading} loading={loading} />
                             })}
                         </div>

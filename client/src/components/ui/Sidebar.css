@@ -62,3 +62,21 @@
     font-weight: bold;
     color: black;
 }
+
+#deleteProjectIcon{
+    position: absolute;
+    left:90%;
+    color:rgb(134, 134, 134) !important;
+}
+
+.deleteTask-button{
+    cursor: pointer;
+    max-width:150px;
+    padding: 10px;
+    background-color: rgba(228, 0, 0, 0.815);
+    border:none;
+    border-radius: 5px;
+    color:white;
+    font-weight: 600;
+    margin: auto;
+}

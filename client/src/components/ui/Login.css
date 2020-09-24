@@ -1,0 +1,122 @@
+.login-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container > h1{
+    margin: auto auto -7rem auto;
+    display: flex;
+    white-space: nowrap;
+}
+
+.login-container > h1 > *{
+    font-family: 'Rubik', sans-serif;
+    font-size: 50px;
+}
+
+.login-form > p{
+    margin: 10px auto auto auto;
+    padding: 50px 0px 30px 0px;
+    top: 10px;
+    left: 30%;
+    font-family: 'Rubik', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.register-form-header{
+    margin: 10px auto auto auto;
+    padding: 10px 0px 20px 0px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.login-form > span{
+    margin: 20px auto auto auto;
+}
+
+.login-form > span > span{
+    color: var(--theme-color);
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#taskify{
+    color: var(--theme-color);
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.login-form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 25%;
+    height: auto;
+    border: 1px solid gray;
+    border-radius: 7px;
+    padding: 0px 20px 30px 20px;
+}
+
+.input-row{
+    display:flex;
+    align-items: center;
+    margin: auto 0;
+    position: relative;
+}
+
+.input-row > input{
+    width: 100%;
+    margin: 0px 10px 10px 10px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(224, 223, 223);
+    text-indent: 8px;
+}
+
+.input-row > input::placeholder{
+    font-family: 'Rubik', sans-serif;
+}
+
+.button-container{
+    width: 50%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container > button{
+    font-family: 'Rubik', sans-serif;
+    margin-top: 1rem;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#login{
+    background-color: rgb(0, 82, 206);
+}
+
+#register{
+    background-color: var(--theme-color);
+}
+
+.visibility-icon{
+    position: absolute;
+    left: 90%;
+    top: 8px;
+    color: gray;
+    cursor: pointer;
+}
+
+.invalid{
+    border: 3px solid rgba(255, 0, 0, 0.658) !important;
+}

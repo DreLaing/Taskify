@@ -16,7 +16,7 @@ const userSchema = mongoose.Schema({
         dateCompleted:{type:Date, default:Date.now},
         project:{type:String, default:'General'}
     }],
-    projects:[String]
+    projects:[{type:String, unique:true}]
 })
 
 const User = mongoose.model('User', userSchema)

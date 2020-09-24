@@ -4,26 +4,6 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 
-router.post('/register', async (req,res) =>{
-    const username = req.body.username;
-    const password = await bcrypt.hash(req.body.password, 10)
-    const newUser = new User({
-        username,
-        password
-    })
-    newUser.save()
-    .then(user => {
-        responseUser={
-            _id:user._id, 
-            username: user.username, 
-            projects:user.projects
-        }
-        res.status(200).json(user)
-    })
-    .catch(err => {
-        res.status(500).json(`${err}`)})
-})
-
 // GET PROJECTS
 router.get('/:id/projects', (req,res)=>{
     User.findById(req.params.id)
@@ -35,9 +15,16 @@ router.get('/:id/projects', (req,res)=>{
 router.post('/:id/projects/add', (req,res)=>{
     User.findByIdAndUpdate(req.params.id)
     .then(user =>{
-        user.projects.unshift(req.body.project)
-        user.save()
-        res.json(user)
+        uniqueProject = user.projects.filter(project => project == req.body.project)
+        if(uniqueProject.length > 0){
+            console.log(uniqueProject)
+            res.status(203).json('Project must be unique')
+        }
+        else{
+            user.projects.unshift(req.body.project)
+            user.save()
+            res.json(user)
+        }
     })
     .catch(err => res.json(`ERROR: ${err}`))
 })
@@ -146,10 +133,13 @@ router.delete('/:id/delete/project/:project', (req,res)=>{
     .then(result =>{
         let tasks = result.tasks
         let projects = result.projects
+        let completedTasks = result.completedTasks
         projects = projects.filter(project => project!==req.params.project)
         tasks = tasks.filter(task => task.project!==req.params.project)
+        completedTasks = completedTasks.filter(task => task.project!==req.params.project)
         result.tasks = tasks
         result.projects = projects
+        result.completedTasks = completedTasks
         result.save()
         res.json(result)
     })
