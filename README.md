@@ -6,16 +6,18 @@
 
 A Task manager app where the user is able to record and organize tasks that they wish to complete.
 
-#### Technologies
-- ReactJS
-- NodeJS (ExpressJS)
-- MongoDB
+
 
 ### Requirements
 - User is able to login/register.
 - User is able to create, read, update and delete projects.
 - User is able to create, read, update and delete tasks.
 - User is able to mark tasks as completed and view the completed tasks.
+---
+#### Technologies
+- ReactJS
+- NodeJS (ExpressJS)
+- MongoDB
 
 
 ---
