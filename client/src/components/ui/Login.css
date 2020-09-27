@@ -1,11 +1,13 @@
 .login-container{
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 4rem;
+    align-content: center;
 }
 
 .login-container > h1{
-    margin: auto auto -7rem auto;
+    margin: auto;
     display: flex;
     white-space: nowrap;
 }
@@ -126,8 +128,12 @@
         width: 50%;
     }
 
+    .login-container{
+        row-gap: 3rem;
+    }
+
     .login-container > h1{
-        margin: auto auto -20rem auto;
+        margin: auto;
     }
 }
 
@@ -140,32 +146,55 @@
     .login-container > h1 > *{
         font-size: 40px;
     }
-
-    .login-container > h1{
-        margin: auto auto -15rem auto;
-    }
 }
 
 @media (max-width:600px){
     .login-form{
         width: 80%;
     }
-
-    .login-container > h1{
-        margin: auto auto -10rem auto;
-    }
 }
 
 @media (max-width:500px){
     .login-form{
-        width: 90%;
+        width: 85%;
     }
 
     .input-row > input{
         padding: 0px 2px 2px 2px
     }
 
-    .login-container > h1{
-        margin: auto auto -3rem auto;
+    .login-container > h1 > *{
+        font-size: 35px;
+    }
+
+
+    .visibility-icon{
+        left: 85%;
+    }
+}
+
+@media (max-width: 300px){
+    .login-container{
+        row-gap: 3rem;
+    }
+
+    .login-container > h1 > *{
+        font-size: 30px;
+    }
+
+    .input-row > input{
+        margin: 2px;
+    }
+
+    .input-icon{
+        font-size: x-large !important;
+    }
+
+    .input-row > input::placeholder{
+        visibility: hidden;
+    }
+
+    .register-form-header{
+        font-size: 20px;
     }
 }

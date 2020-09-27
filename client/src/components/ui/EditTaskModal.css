@@ -3,6 +3,7 @@
     display:flex;
     position: relative;
     justify-content: center;
+    margin: auto;
 }
 
 .modal-bg{
@@ -33,7 +34,7 @@
     position: relative;
     margin:auto;
     height: auto;
-    top: 100px;
+    top: 25%;
     border: 1px solid white;
     padding: 20px;
     border-radius: 10px;
@@ -58,6 +59,12 @@
     background-color: rgb(228, 228, 228);
 }
 
+@media (max-width: 1024px){
+    .edit-form{
+        width: 350px;
+    }
+}
+
 @media (max-width: 450px){
     .edit-form{
         width: 300px;
@@ -67,5 +74,11 @@
 @media (max-width: 350px){
     .edit-form{
         width: 250px;
+    }
+}
+
+@media (max-width: 300px){
+    .edit-form{
+        width: 200px;
     }
 }

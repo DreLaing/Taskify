@@ -37,7 +37,7 @@ const ProjectPage = () => {
     return (
         <div className='homepage-container'>
             <div>
-                <h3 className='heading form-heading'>CREATE NEW "{project}" TASK</h3>
+                <h3 className='heading form-heading'>Create New "{project}" Task</h3>
                 <div className='content-container'>
                     <NewTask userID={userID} project={project} token={token} setTasks={setTasks} setLoading={setLoading}/>
                     <div className='tasks-container'>

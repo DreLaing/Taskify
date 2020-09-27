@@ -56,12 +56,12 @@ const Login = () => {
             <form onSubmit={login} className='login-form'>
                 <p>Sign In</p>
                 <div className='input-row'>
-                    <label htmlFor='username'><FaceIcon fontSize='large' /></label>
+                    <label htmlFor='username'><FaceIcon fontSize='large' className='input-icon' /></label>
                     <input onFocus={()=> usernameRef.current.classList.remove('invalid')} ref={usernameRef} name='username' type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} required/>
                 </div>
 
                 <div className='input-row'>
-                    <label htmlFor='password'><LockIcon fontSize='large' /></label>
+                    <label htmlFor='password'><LockIcon fontSize='large' className='input-icon' /></label>
                     <input onFocus={()=> passwordRef.current.classList.remove('invalid')} ref={passwordRef} name='password' type='password' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} required/>
                     <VisibilityIcon htmlFor='password' className='visibility-icon' onClick={()=> toggleVisibility()}/>
                 </div>

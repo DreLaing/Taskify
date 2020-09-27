@@ -111,6 +111,8 @@
 
     .menu-icon.show{
         left: 260px;
+        position: fixed;
+        z-index: 1;
     }
 
     .show{

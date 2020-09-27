@@ -13,7 +13,7 @@ const Tasks = (props) => {
     axios.defaults.headers.common = {'Authorization': `Bearer ${props.token}`}
 
     useEffect(()=>{
-        if(new Date(Date.now()) >= new Date(props.task.dueDate)){
+        if(new Date(Date.now()) > new Date(props.task.dueDate)){
             setOverdue(true)
         }
     },[])

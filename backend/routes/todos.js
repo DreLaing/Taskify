@@ -33,25 +33,48 @@ router.post('/:id/projects/add', (req,res)=>{
 router.route('/:id/add').post((req,res)=>{
     User.findByIdAndUpdate(req.params.id)
     .then(user => {
-        if(req.body.project){
-            user.tasks.unshift({ 
-                task: req.body.task,
-                dueDate: Date.parse(req.body.date),
-                project: req.body.project
-             })
-             user.save((err)=>{console.log(`USER ERROR: ${err}`)})
-             const response={tasks: user.tasks}
-             res.status(200).json(response)
+        if(req.body.date){
+            if(req.body.project){
+                user.tasks.unshift({ 
+                    task: req.body.task,
+                    dueDate: Date.parse(req.body.date),
+                    project: req.body.project
+                 })
+                 user.save((err)=>{console.log(`USER ERROR: ${err}`)})
+                 const response={tasks: user.tasks}
+                 res.status(200).json(response)
+            }
+            else{
+                user.tasks.unshift({ 
+                    task: req.body.task,
+                    dueDate: Date.parse(req.body.date)
+                 })
+                 user.save((err)=>{console.log(`USER ERROR: ${err}`)})
+                 const response={tasks: user.tasks}
+                 res.status(200).json(response)
+            }
         }
         else{
-            user.tasks.unshift({ 
-                task: req.body.task,
-                dueDate: Date.parse(req.body.date)
-             })
-             user.save((err)=>{console.log(`USER ERROR: ${err}`)})
-             const response={tasks: user.tasks}
-             res.status(200).json(response)
+            if(req.body.project){
+                user.tasks.unshift({ 
+                    task: req.body.task,
+                    project: req.body.project
+                 })
+                 user.save((err)=>{console.log(`USER ERROR: ${err}`)})
+                 const response={tasks: user.tasks}
+                 res.status(200).json(response)
+            }
+            else{
+                user.tasks.unshift({ 
+                    task: req.body.task,
+                 })
+                 user.save((err)=>{console.log(`USER ERROR: ${err}`)})
+                 const response={tasks: user.tasks}
+                 res.status(200).json(response)
+            }
         }
+
+        
         
     })
     .catch(err => res.json(`Error: ${err}`))
