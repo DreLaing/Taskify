@@ -39,7 +39,7 @@ const HomePage = () => {
     return (
         <div className='homepage-container'>
             <div>
-                <h3 className='heading form-heading'>CREATE NEW TASK</h3>
+                <h3 className='heading form-heading'>Create new task</h3>
                 <div className='content-container'>
                     <NewTask userID={userID} setTasks={setTasks} token={token} setLoading={setLoading}/>
                     <div className='tasks-container'>

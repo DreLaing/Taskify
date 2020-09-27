@@ -7,13 +7,17 @@ import './ui/Sidebar.css'
 import CloseIcon from '@material-ui/icons/Close'
 import AddProjectModal from './AddProjectModal'
 import DeleteProjectModal from './DeleteProjectModal'
+import MenuIcon from '@material-ui/icons/Menu';
 
 const Sidebar = () => {
     const [deleteID, setDeleteID] = useState()
+    const [visible, setVisible] = useState(false)
     const [loading, setLoading] = useState(false)
     const history = useHistory()
     const location = useLocation()
+    const nav = useRef(null)
     const modal = useRef(null)
+    const menuIcon = useRef(null)
     const deleteModal = useRef(null)
     const userID = localStorage.getItem("userID")
     const [projects, setProjects] = useState([''])
@@ -36,9 +40,22 @@ const Sidebar = () => {
         history.push('/')
     }
 
+    const toggleSidebar = () =>{
+        setVisible(!visible)
+        if(visible){
+            nav.current.classList.remove("show")
+            menuIcon.current.classList.remove("show")
+        }
+        else{
+            nav.current.classList.add("show")
+            menuIcon.current.classList.add('show')
+        }
+    }
+
     return (
         <>
-        <nav className='nav'>
+        <MenuIcon ref={menuIcon} className='menu-icon' onClick={()=> toggleSidebar()} fontSize='large'/>
+        <nav className='nav' ref={nav}>
             <p><Link className='logo' to={`/user/${userID}`}>Taskify</Link></p>
             <hr/>
             <div className='nav-links'>

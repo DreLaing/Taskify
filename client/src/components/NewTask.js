@@ -15,7 +15,7 @@ const NewTask = (props) => {
     }
 
     const validate = () =>{
-        if(date.length < 1 || task.length < 3 || task.length > 70){
+        if(date.length < 1 || task.length < 3){
             setDisabled(true)
         }
         else{

@@ -4,7 +4,12 @@
     background-color: rgb(255, 255, 255);
     box-shadow:-7px 0px 41px -19px rgba(0,0,0,0.48);
     width: 250px;
+    z-index: 1;
+    transition-property: margin;
+    transition-timing-function: ease-in-out;
+    transition-duration: 400ms;
 }
+
 .nav > *{
     width: 90%;
     margin: 1rem auto;
@@ -79,4 +84,38 @@
     color:white;
     font-weight: 600;
     margin: auto;
+}
+
+.menu-icon{
+    display: none;
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    color: rgb(90, 2, 90);
+}
+
+.menu-icon.show{
+    left:2%;
+    transition-property: left;
+    transition-timing-function: ease-in-out;
+    transition-duration: 400ms;
+}
+
+@media (max-width: 1024px){
+    .nav{
+        margin-left: -250px;
+    }
+    .menu-icon{
+        display:block;
+    }
+
+    .menu-icon.show{
+        left: 260px;
+    }
+
+    .show{
+        margin-left: 0;
+    }
+
+    
 }
