@@ -87,11 +87,19 @@
 }
 
 .menu-icon{
-    display: none;
-    position: absolute;
+    position: fixed;
     left: 2%;
-    top: 2%;
-    color: rgb(90, 2, 90);
+    top: 1%;
+    color: white;
+}
+
+.mobile-nav{
+    height: 50px;
+    display:none;
+    position: fixed;
+    width: 100% !important;
+    background-color: purple;
+    z-index: 1;
 }
 
 .menu-icon.show{
@@ -105,7 +113,7 @@
     .nav{
         margin-left: -250px;
     }
-    .menu-icon{
+    .mobile-nav{
         display:block;
     }
 

@@ -54,7 +54,7 @@ const Sidebar = () => {
 
     return (
         <>
-        <MenuIcon ref={menuIcon} className='menu-icon' onClick={()=> toggleSidebar()} fontSize='large'/>
+        <div className='mobile-nav'><MenuIcon ref={menuIcon} className='menu-icon' onClick={()=> toggleSidebar()} fontSize='large'/></div>
         <nav className='nav' ref={nav}>
             <p><Link className='logo' to={`/user/${userID}`}>Taskify</Link></p>
             <hr/>
