@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import NewTask from './NewTask'
 import Tasks from './Tasks'
 
 const ProjectPage = () => {
+    const history = useHistory()
     const location = useLocation()
     const { project } = useParams()
     const [loading, setLoading] = useState(false)
@@ -32,7 +33,7 @@ const ProjectPage = () => {
             setCompletedTasks(user.data.completedTasks)
             console.log(user.data)
         })
-        .catch(err => console.log(err))
+        .catch(err => history.push('/'))
     },[loading, location])
     return (
         <div className='homepage-container'>

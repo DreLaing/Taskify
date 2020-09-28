@@ -29,7 +29,7 @@ const Sidebar = () => {
         .then(response =>{
             setProjects(response.data)
         })
-        .catch(err => console.log(err))
+        .catch(err => history.push('/'))
     },[loading, location])
 
     if(loading){

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import './ui/HomePage.css'
 import NewTask from './NewTask'
 import Tasks from './Tasks'
 
 const HomePage = () => {
+    const history = useHistory()
     const location = useLocation()
     const [loading, setLoading] = useState(false)
     const [tasks, setTasks] = useState([{
@@ -34,7 +35,7 @@ const HomePage = () => {
             setCompletedTasks(user.data.completedTasks)
             console.log(user.data.tasks)
         })
-        .catch(err => console.log(err))
+        .catch(err => history.push('/'))
     },[loading])
     return (
         <div className='homepage-container'>
